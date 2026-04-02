@@ -5,17 +5,16 @@ os.environ["KMP_INIT_AT_FORK"] = "FALSE"  # Prevent issues with subprocesses
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"  # Allow execution but risks remain
 
 import torch
-import faiss
-import pickle
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import FAISS
 
 # Limit PyTorch threads
 torch.set_num_threads(1)
 
 DATA_PATH = 'data/'  # Directory containing PDFs
-VECTORSTORE_DIR = 'vectorstore/'  # Directory to save FAISS index and metadata
+DB_FAISS_PATH = 'vectorstore/db_faiss'  # Directory to save FAISS index
 
 # Create vector database using FAISS
 def create_vector_db():
@@ -29,28 +28,19 @@ def create_vector_db():
 
     # Step 3: Set up embeddings model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2', model_kwargs={'device': device})
+    embeddings = HuggingFaceEmbeddings(
+        model_name='shibing624/text2vec-base-chinese',
+        model_kwargs={'device': device}
+    )
 
-    # Step 4: Compute embeddings
-    texts_content = [doc.page_content for doc in texts]
-    embeddings_matrix = embeddings.embed_documents(texts_content)
+    # Step 4: Create FAISS vector store
+    print("Creating FAISS vector store...")
+    db = FAISS.from_documents(texts, embeddings)
 
-    # Step 5: Initialize FAISS index
-    embedding_dim = len(embeddings_matrix[0])  # Dimensionality of embeddings
-    index = faiss.IndexFlatL2(embedding_dim)  # L2 distance is used for similarity search
+    # Step 5: Save FAISS index
+    db.save_local(DB_FAISS_PATH)
 
-    # Add embeddings to FAISS index
-    index.add(embeddings_matrix)
-
-    # Step 6: Save FAISS index and metadata
-    os.makedirs(VECTORSTORE_DIR, exist_ok=True)
-    faiss.write_index(index, os.path.join(VECTORSTORE_DIR, "index.faiss"))
-
-    # Save metadata for future retrieval (text data and mappings)
-    with open(os.path.join(VECTORSTORE_DIR, "vector_store.pkl"), "wb") as f:
-        pickle.dump({"texts": texts_content}, f)
-
-    print(f"FAISS index created and stored in '{VECTORSTORE_DIR}' successfully.")
+    print(f"FAISS index created and stored in '{DB_FAISS_PATH}' successfully.")
 
 if __name__ == "__main__":
     create_vector_db()

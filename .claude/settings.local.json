@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python setup_knowledge_base.py:*)",
+      "Bash(python create_sample_pdf.py:*)",
+      "Bash(python ingest.py:*)",
+      "Bash(chainlit run:*)",
+      "Bash(python:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(dir \"C:\\\\Users\\\\ASUS\\\\.cache\\\\huggingface\\\\hub\\\\models--TheBloke--Llama-2-7B-Chat-GGML\" /s)",
+      "Bash(systeminfo:*)"
+    ]
+  }
+}

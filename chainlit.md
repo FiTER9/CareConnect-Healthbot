@@ -1,31 +1,47 @@
-<<<<<<< HEAD
-# Welcome to Chainlit! 🚀🤖
+# 欢迎使用 CareConnect 医疗聊天机器人！ 🏥💬
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+您好！👋 欢迎使用 CareConnect 医疗健康助手。我是一个基于人工智能的医疗咨询机器人，可以帮助您了解各种健康和医疗相关的问题。
 
-## Useful Links 🔗
+## 🎯 我能做什么
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+- 💊 回答常见疾病的症状和治疗方法
+- 🏃 提供健康生活方式建议
+- 🚑 解答急救和紧急护理问题
+- 🥗 分享营养和饮食指导
+- 🧠 提供心理健康和压力管理建议
+- 💉 解释预防保健和疫苗接种信息
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+## 📝 如何使用
 
-## Welcome screen
+1. **在下方输入框中输入您的问题**
+2. **可以使用中文或英文提问**
+3. **我会基于医疗知识库为您提供答案**
+4. **每个回答都会标注信息来源**
 
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
-=======
-# Welcome to Chainlit! 🚀🤖
+## 💡 示例问题
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+您可以尝试问我：
 
-## Useful Links 🔗
+- "糖尿病的症状有哪些？"
+- "如何预防高血压？"
+- "普通感冒应该怎么治疗？"
+- "CPR 心肺复苏的步骤是什么？"
+- "健康饮食应该包括哪些食物？"
+- "如何管理压力和焦虑？"
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+## ⚠️ 重要提示
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+**本聊天机器人仅供教育和信息参考，不能替代专业医疗建议、诊断或治疗。**
 
-## Welcome screen
+- ❌ 不要将此作为医疗诊断的依据
+- ❌ 不要用于紧急医疗情况
+- ✅ 如有健康问题，请咨询专业医生
+- ✅ 紧急情况请立即拨打急救电话
 
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
->>>>>>> 3b71dfa0dd557a06a0f2e85e010f1de76ea6f174
+## 🚀 开始使用
+
+现在就在下方输入您的健康问题，让我来帮助您！
+
+---
+
+**祝您健康！** 🌟
